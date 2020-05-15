@@ -1,36 +1,59 @@
-<h1>ENTRADAS</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ALMSolutions</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <center >
+    <h1>ENTRADAS</h1>
+    </center>
 
+    {% if ultimas_entradas_financeiras %}
+        {% if error_menssage %} 
+        <p><strong>
+            {{error_menssage }}
+        </strong></p>
+        {% endif %}
+        
+        <ul>
+        {% for entrada in ultimas_entradas_financeiras %}
+            <li> 
+                <a href="{% url 'financeiro:entrada' entrada.id %}">{{ entrada.valor_entrada}}</a>
+            </li>
+        {% endfor %}
+        </ul>
 
-{% if ultimas_entradas_financeiras %}
-    {% if error_menssage %} 
-    <p><strong>
-        {{error_menssage }}
-    </strong></p>
+    {% else %}
+        <p> Nenhum valor de entrada encontrado </p>
     {% endif %}
+
+
+
+    <center>
+    <h1>SAIDAS</h1>  
+    </center>
+    {% if ultimas_saidas_financeiras %}
+        {% if error_menssage %} 
+        <p><strong>
+            {{error_menssage }}
+        </strong></p>
+        {% endif %}
+        
+        <ul>
+        {% for saida in ultimas_saidas_financeiras %}
+            <li> 
+                <a href="{% url 'financeiro:saida' saida.id %}">{{ saida.valor_saida}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+
+    {% else %}
+        <p> Nenhum valor de entrada encontrado </p>
+    {% endif %}
+
     
-    <ul>
-    {% for entrada in ultimas_entradas_financeiras %}
-        <li> 
-            <a href="{% url 'financeiro:entrada' entrada.id %}">{{ entrada.valor_entrada}}</a>
-        </li>
-    {% endfor %}
-    </ul>
-
-<!-- Criar um form para enviar  
-    <form method="POST">
-        {% csrf_token %}
-        <input type="number" name="entrada" id="entrada{{ forloop.counter }}" value="{{entrada.id}}">
-        <label for="entrada{{ forloop.counter }}">Digite Valor de Entrada</label><br>
-
-    </form> 
--->
-
-{% else %}
-    <p> Nenhum valor de entrada encontrado </p>
-{% endif %}
-
-
-
-
-<h1>SAIDAS</h1>  
-    <p> Nenhum valor de entrada encontrado </p>
+</body>
+</html>
