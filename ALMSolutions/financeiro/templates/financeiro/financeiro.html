@@ -1,0 +1,11 @@
+{% if ultimas_entradas_financeiras %}
+    <ul>
+    {% for entrada in ultimas_entradas_financeiras %}
+        <li> 
+            <a href="/financeiro/{{ entrada_id }}/">{{ entrada.valor_entrada}}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> Nenhum valor de entrada encontrado </p>
+{% endif %}
