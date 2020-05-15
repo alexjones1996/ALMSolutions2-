@@ -1,11 +1,36 @@
+<h1>ENTRADAS</h1>
+
+
 {% if ultimas_entradas_financeiras %}
+    {% if error_menssage %} 
+    <p><strong>
+        {{error_menssage }}
+    </strong></p>
+    {% endif %}
+    
     <ul>
     {% for entrada in ultimas_entradas_financeiras %}
         <li> 
-            <a href="/financeiro/{{ entrada_id }}/">{{ entrada.valor_entrada}}</a>
+            <a href="{% url 'financeiro:entrada' entrada.id %}">{{ entrada.valor_entrada}}</a>
         </li>
     {% endfor %}
     </ul>
+
+<!-- Criar um form para enviar  
+    <form method="POST">
+        {% csrf_token %}
+        <input type="number" name="entrada" id="entrada{{ forloop.counter }}" value="{{entrada.id}}">
+        <label for="entrada{{ forloop.counter }}">Digite Valor de Entrada</label><br>
+
+    </form> 
+-->
+
 {% else %}
     <p> Nenhum valor de entrada encontrado </p>
 {% endif %}
+
+
+
+
+<h1>SAIDAS</h1>  
+    <p> Nenhum valor de entrada encontrado </p>

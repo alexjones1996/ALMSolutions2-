@@ -18,7 +18,7 @@ class Saida(models.Model):
     data_saida = models.DateTimeField('Data do Pagamento')
 
     def __str__(self):
-        return self.valor_saida
+        return str(self.valor_saida)
     
     def ultimas_saidas(self):
         return self.data_saida >= timezone.now() - datetime.timedelta(month=31)

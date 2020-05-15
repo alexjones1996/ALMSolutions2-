@@ -1,14 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
-from .models import Entrada
+from .models import Entrada, Saida
 
 
 def financeiro(request):
     #Retorna do BD as 10 ultimas entradas financeiras
     ultimas_entradas_financeiras = Entrada.objects.order_by('-data_entrada')[:10]
-    resposta_de_valores_bd = { 'ultimas_entradas_financeiras': ultimas_entradas_financeiras,}
-    
-    return render(request, 'financeiro/financeiro.html', resposta_de_valores_bd)
+    resposta_entrada_do_bd = { 'ultimas_entradas_financeiras': ultimas_entradas_financeiras,}
+    return render(request, 'financeiro/financeiro.html', resposta_entrada_do_bd)
 
 
     #template = loader.get_template('financeiro/financeiro.html')
@@ -18,3 +17,5 @@ def financeiro(request):
 def entrada(request, entrada_id):
     entrada = get_object_or_404(Entrada, pk=entrada_id)
     return render(request, 'financeiro/financeiro.html', {'entrada' : entrada})
+
+    
