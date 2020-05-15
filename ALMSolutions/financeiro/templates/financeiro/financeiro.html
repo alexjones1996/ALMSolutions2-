@@ -3,13 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <title>ALMSolutions</title>
-    <link href="index.css" rel="stylesheet" type="text/css" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'financeiro/style.css' %}">
     <script src="main.js"></script>
 </head>
 <body>
-    <center >
+<center >
     <h1>ENTRADAS</h1>
-    </center>
+    
 
     {% if resposta_entrada_do_bd.ultimas_entradas_financeiras %}
         {% if error_menssage %} 
@@ -18,42 +19,44 @@
         </strong></p>
         {% endif %}
         
-        <ul>
-        {% for entrada in resposta_entrada_do_bd.ultimas_entradas_financeiras %}
-            <li> 
-                <a href="{% url 'financeiro:entrada' entrada.id %}">{{ entrada.valor_entrada}}</a>
-            </li>
-        {% endfor %}
-        </ul>
-
+        <table border="2">
+                {% for entrada in resposta_entrada_do_bd.ultimas_entradas_financeiras %}
+                <tr>
+                <td> 
+                    <a href="{% url 'financeiro:entrada' entrada.id %}">{{ entrada.valor_entrada}}</a>
+                </td>
+                </tr>
+                {% endfor %}
+        </table>
+        
+        
     {% else %}
         <p> Nenhum valor de entrada encontrado </p>
     {% endif %}
 
 
 
-    <center>
     <h1>SAIDAS</h1>  
-    </center>
     {% if resposta_saida_do_bd.ultimas_saidas_financeiras %}
         {% if error_menssage %} 
         <p><strong>
             {{error_menssage }}
         </strong></p>
         {% endif %}
+        <table border="2">
         
-        <ul>
         {% for saida in resposta_saida_do_bd.ultimas_saidas_financeiras %}
-            <li> 
+            <tr>
+            <td>
                 <a href="{% url 'financeiro:saida' saida.id %}">{{ saida.valor_saida}}</a>
-            </li>
+            </td>
+            </tr>
         {% endfor %}
-        </ul>
-
+        </table>
     {% else %}
         <p> Nenhum valor de entrada encontrado </p>
     {% endif %}
 
-    
+</center>
 </body>
 </html>
