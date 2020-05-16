@@ -27,7 +27,11 @@
                 <td> 
                     <a href="{% url 'financeiro:entrada' entrada.id %}">{{ entrada.valor_entrada}}</a>
                 </td>
+                <td> 
+                    <a href="{% url 'financeiro:entrada' entrada.id %}">{{ entrada.data_entrada}}</a>
+                </td>
                 </tr>
+
                 {% endfor %}
         </table>
         
@@ -51,6 +55,9 @@
             <tr>
             <td>
                 <a href="{% url 'financeiro:saida' saida.id %}">{{ saida.valor_saida}}</a>
+            </td>
+            <td> 
+                <a href="{% url 'financeiro:saida' saida.id %}">{{ saida.data_saida}}</a>
             </td>
             </tr>
         {% endfor %}

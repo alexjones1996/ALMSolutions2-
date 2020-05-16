@@ -8,6 +8,10 @@ def financeiro(request):
     ultimas_entradas_financeiras = Entrada.objects.order_by('-data_entrada')[:10]
     resposta_entrada_do_bd = { 'ultimas_entradas_financeiras': ultimas_entradas_financeiras,}
     
+    #listar todas entradas
+    #ultimas_entradas_financeiras = Entrada.objects.all()
+
+
     #Retorna do BD as 20 ultimas entradas financeiras
     ultimas_saidas_financeiras = Saida.objects.order_by('-data_saida')[:10]
     resposta_saida_do_bd = { 'ultimas_saidas_financeiras' : ultimas_saidas_financeiras}
