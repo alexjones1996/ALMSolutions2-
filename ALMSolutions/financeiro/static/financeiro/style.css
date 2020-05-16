@@ -23,19 +23,19 @@ button:hover {
 }
 
 table{
+
+	text-align: center;
     background: black;
-    font-size: 20px;
-    
+	font-size: 20px;
+	color: white;    
 }
-tr:hover{
-    background: #b4b4b4;
-	color: black;
+td{
+	width: 200px;
+	height: 30px;
+
 }
 
 a{
     text-decoration: none;
     color: white;
-}
-a:hover{
-    color: black;
 }
