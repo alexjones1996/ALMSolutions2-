@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>ALMSolutions</title>
+        {% load static %}
+        <center><img src="{% static 'financeiro/logoValeVerde.png' %}" alt="logo"></center>
+        <link rel="stylesheet" type="text/css" href="{% static 'financeiro/style.css' %}">
+        <script src="main.js"></script>
+    </head>
+<body>
+    <center style="color: black;">
+    <h1>AGENDA</h1>
+    <h1>Novo/Atualizar Evento</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit"> Salvar </button>
+    </form>
+    </center>
+</body>
+</html>

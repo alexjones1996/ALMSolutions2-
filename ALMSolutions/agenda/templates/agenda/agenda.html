@@ -15,37 +15,38 @@
 
     <h1>AGENDA</h1>
     <h1>Próximos Eventos</h1>
+    
+
     <table border="3">
-        <tr>
-            <td> 
-                Contratante
-            </td>
-            <td> 
-                Data/Horário
-            </td>
-            <td> 
-                Tipo
-            </td>
-            <td> 
-                Descrição
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                .
-            </td>
-            <td> 
-                .
-            </td>
-            <td> 
-                .
-            </td>
-            <td> 
-                .
-            </td>
-        </tr>
+    {% for agenda in agenda_eventos %}
+            <tr>
+                <td> 
+                    {{agenda.titulo}}
+                </td>
+                <td> 
+                    {{agenda.tipo}}
+                </td>
+                <td> 
+                    {{agenda.descricao_evento}}
+
+                </td>
+                <td> 
+                    R$ {{agenda.valor_evento}}
+
+                </td>
+                <td> 
+                    {{agenda.data_evento}}
+
+                </td>
+            </tr>
+        
+    {% endfor %}
     </table>
-  
+    <a href="criar_evento"> 
+        <button>Adicionar Evento </button>
+    </a>
+
+
     </center>
 </body>
 </html>
