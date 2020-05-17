@@ -7,24 +7,18 @@
         <center><img src="{% static 'financeiro/logoValeVerde.png' %}" alt="logo"></center>
         <link rel="stylesheet" type="text/css" href="{% static 'financeiro/style.css' %}">
         <script src="main.js"></script>
-    </head>
+    </head>    
 <body>
     <center style="color: black;">
-    <h1>AGENDA</h1>
-    <h1>Novo/Atualizar Evento</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit"> Salvar </button>
+        <h2>Deseja Apagar Evento <strong>"{{evento.titulo}}"</strong> ? </h2>
+        <button type="submit"> APAGAR </button>
+        <a href="{% url 'consulta_evento' %}">
+            <button>CANCELAR</button>
+        </a>
+
     </form>
-
-    {% if evento %}
-    <a href="{% url 'apagar_evento' evento.id %}">
-        <button > Apagar  </button>
-    </a>
-    {% endif%}
-    
-
     </center>
 </body>
 </html>
